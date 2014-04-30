@@ -52,47 +52,6 @@ public:
 
 	void draw(){
 
-		//movement; generates random x value
-		if(move == 1){
-			if(objTran.y <= 5.0){
-				objTran.y += speed+0.4;
-			if(objTran.x >= -19.0){
-				objTran.x -= speed+0.2;
-					if(objTran.z >= 0.0){
-						//objTran.y += speed+0.4;
-						//objTran.x -= speed+0.2;
-						objTran.z -= speed;
-					}
-				}
-			}
-		}
-		else if(move == 2){
-				if(objTran.y <= 5.0){
-					objTran.y += speed;
-					if(objTran.z >= -10.0){
-						objTran.z -= speed;
-				}
-			}
-		}
-		else if(move == 4){
-			objTran.x = -100.0;
-		}
-		else if(move == 5){
-			objTran.x = -5.0;
-			objTran.z = -10.0;
-		}
-		else if(move == 6){
-			if(objTran.y <= 20.0){
-				objTran.y += speed;
-			}
-		}
-		else if(move == 7){
-			if(objTran.y >= 0.0){
-				objTran.y -= speed;
-			}
-		}	
-
-
 		//buffers
 		glGenVertexArrays(1,&vaoID);
     	glBindVertexArray(vaoID);
@@ -117,8 +76,8 @@ public:
     	glUniformMatrix4fv(tempLoc,1,GL_FALSE,&trans[0][0]);
 
 		GLfloat amb[]={0.7f,0.7f,0.7f,1.0f};
-		GLfloat light1d[] = {500.0f, 500.0f, 500.0f};
-  		GLfloat light1c[] = {0.1f, 0.1f, 0.1f};
+		GLfloat light1d[] = {200.0f, 200.0f, 200.0f};
+  		GLfloat light1c[] = {1.0f, 1.0f, 1.0f};
     
 		GLint lightLocation = glGetUniformLocation(prog,"Ambient");
 		glUniform4fv(lightLocation,1,amb);
@@ -136,6 +95,26 @@ public:
     	glEnableVertexAttribArray(1);
 		glEnableVertexAttribArray(2);
 		glEnableVertexAttribArray(3);		
+
+		//movement; generates random x value
+		if(move == 1){
+			if(objTran.y <= 5.0){
+				objTran.y += speed+0.4;
+			if(objTran.x >= -19.0){
+				objTran.x -= speed+0.2;
+					if(objTran.z >= 0.0){
+						objTran.z -= speed;
+					}
+				}
+			}
+		}
+		else if(move == 2){
+			objTran.x = -100.0;
+		}
+		else if(move == 3){
+			objTran.x = -5.0;
+			objTran.z = -10.0;
+		}
 
 		glDrawElements(GL_POLYGON,elemssize,GL_UNSIGNED_BYTE,NULL);
 	
@@ -322,8 +301,8 @@ void textbuffcube(){
 
 	glActiveTexture(GL_TEXTURE3);
 	glUniform1i(uniform_mytexture, 3);
-}
-			
+}		
 };
+
 
 #endif
