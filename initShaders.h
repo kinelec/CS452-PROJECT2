@@ -42,9 +42,9 @@ GLuint initShaders(Shader* s){
 	//camera movement
 	glm::mat4 view;
   	view = glm::lookAt(
- 	  	glm::vec3(0.0f, 0.0f, 80.0f),
+ 	  	glm::vec3(0.0f, 0.0f, 200.0f),
         glm::vec3(0.0f, 0.0f, 0.0f),
-        glm::vec3(0.0f, 1.0f, 50.0f)
+        glm::vec3(0.0f, 1.0f, 0.0f)
     );
   	GLint tmpLocation = glGetUniformLocation(prog, "viewMatrix");
   	glUniformMatrix4fv(tmpLocation, 1, GL_FALSE, &view[0][0]);
