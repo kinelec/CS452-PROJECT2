@@ -1,3 +1,4 @@
+#define GLM_FORCE_RADIANS
 #include "initShaders.h"
 #include "paint.h"
 
@@ -276,14 +277,14 @@ GLfloat norms[]={
 };
 
 GLfloat color[]={
-	1.0f,1.0f,1.0f,1.0f,
-	1.0f,1.0f,1.0f,1.0f,
-	1.0f,1.0f,1.0f,1.0f,
-	1.0f,1.0f,1.0f,1.0f,
-	1.0f,1.0f,1.0f,1.0f,
-	1.0f,1.0f,1.0f,1.0f,
-	1.0f,1.0f,1.0f,1.0f,
-	1.0f,1.0f,1.0f,1.0f						
+	1.0f,0.0f,0.0f,1.0f,
+	1.0f,0.0f,0.0f,1.0f,
+	1.0f,0.0f,0.0f,1.0f,
+	1.0f,0.0f,0.0f,1.0f,
+	1.0f,0.0f,0.0f,1.0f,
+	1.0f,0.0f,0.0f,1.0f,
+	1.0f,0.0f,0.0f,1.0f,
+	1.0f,0.0f,0.0f,1.0f						
 	              		};
 GLfloat text[] = { 1.0f, 1.0f,
 	1.0f, 0.0f,
@@ -1484,25 +1485,26 @@ void animation3(){
 void collision(){
 		if(level == 1){
 			if(cube.objTran.y >= 4.0){	
-				cube.move = 4;	
+				cube.move = 2;	
 				animation1();
 			}
 		}
 		else if(level == 2){
 			if(cube.objTran.y >= 4.0){	
-				cube.move = 4;	
+				cube.move = 2;	
 				animation2();
 			}
 		}
 		else if(level == 3){
 			if(cube.objTran.y >= 4.0){	
-				cube.move = 4;	
+				cube.move = 2;	
 				animation3();
 			}
 		}
 		if(selection == -1){
 			if(level == 1){
-				cube.move = 5;
+				cube.objTran.x = -5.0;
+				cube.objTran.z = -10.0;
 			}
 			else if(level == 2){
 				cube.objTran.x = 10.0;
@@ -1524,7 +1526,7 @@ void collision(){
 				diamond.objTran.y -= diamond.speed;
 			}
 			else{
-				sleep(3);
+				sleep(1);
 				exit(0);
 			}
 		}
